@@ -1,6 +1,13 @@
 #include <iostream>
 
+#include "Periphery.h"
+
+using namespace std;
+
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    Periphery *perephery = Periphery::getInstance();
+
+    cout << *perephery << endl;
+
     return 0;
 }
