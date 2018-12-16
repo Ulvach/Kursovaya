@@ -19,6 +19,16 @@ public:
     Printer(const string &producer, int cost, const string &color, const string &interfaces, const string &maxFormat,
             const string &printingColor, int printingSpeed);
 
+    const string &getPrintingColor() const;
+
+    void setPrintingColor(const string &printingColor);
+
+    int getPrintingSpeed() const;
+
+    void setPrintingSpeed(int printingSpeed);
+
+    virtual ~Printer();
+
 };
 
 
