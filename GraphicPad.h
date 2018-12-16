@@ -5,7 +5,8 @@
 #include "Device.h"
 
 class GraphicPad : public Device {
-
+public:
+    void writeToFile(ostream &file) override;
 };
 
 

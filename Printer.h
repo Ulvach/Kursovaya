@@ -14,6 +14,8 @@ private:
     int printingSpeed;
 
 public:
+    void writeToFile(ostream &file) override;
+
     friend ostream &operator<<(ostream &os, const Printer &scanner);
 
     Printer(const string &producer, int cost, const string &color, const string &interfaces, const string &maxFormat,

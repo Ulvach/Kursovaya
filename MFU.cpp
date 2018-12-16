@@ -42,3 +42,11 @@ MFU::~MFU() {
     printingColor = "";
     scanningArea = "";
 }
+
+void MFU::writeToFile(ostream &file) {
+    file << "mfu" << endl;
+    Device::writeToFile(file);
+    file << printingSpeed << endl;
+    file << printingColor << endl;
+    file << scanningArea << endl;
+}

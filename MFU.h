@@ -9,6 +9,8 @@ private:
     int printingSpeed;
     string printingColor;
 public:
+    void writeToFile(ostream &file) override;
+
     MFU(const string &producer, int cost, const string &color, const string &interfaces, const string &maxFormat,
         int printingSpeed, const string &printingColor, const string &scanningArea);
 

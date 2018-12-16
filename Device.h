@@ -15,7 +15,7 @@ private:
     string maxFormat;
 public:
 
-    void writeToFile(ostream &file);
+    virtual void writeToFile(ostream &file);
 
     const string &getProducer() const;
 

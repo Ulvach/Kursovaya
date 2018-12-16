@@ -35,3 +35,10 @@ Printer::~Printer() {
     printingSpeed = 0;
     printingColor = "";
 }
+
+void Printer::writeToFile(ostream &file) {
+    file << "scanner" << endl;
+    Device::writeToFile(file);
+    file << printingSpeed << endl;
+    file << printingColor << endl;
+}

@@ -23,7 +23,8 @@ ostream &operator<<(ostream &os, const Scanner &scanner) {
 
 void Scanner::writeToFile(ostream &file) {
     file << "scanner" << endl;
-    static_cast<Device &>(*this).writeToFile(file);
+    Device::writeToFile(file);
+    file << scanningArea << endl;
 }
 
 
