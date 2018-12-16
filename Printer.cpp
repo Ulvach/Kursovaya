@@ -1,3 +1,4 @@
+#include <iostream>
 #include "Printer.h"
 
 Printer::Printer(const string &producer, int cost, const string &color, const string &interfaces,
@@ -41,4 +42,27 @@ void Printer::writeToFile(ostream &file) {
     Device::writeToFile(file);
     file << printingSpeed << endl;
     file << printingColor << endl;
+}
+
+void Printer::readFromFile(istream &file) {
+    Device::readFromFile(file);
+    int printingSpeed;
+    string printingColor;
+    file >> printingSpeed;
+    file >> printingColor;
+    this->printingColor = printingColor;
+    this->printingSpeed = printingSpeed;
+}
+
+istream &operator>>(istream &in, Printer &printer) {
+    in >> static_cast<Device &>(printer);
+    int printingSpeed;
+    string printingColor;
+    cout << "Введите скорость печати" << endl;
+    in >> printingSpeed;
+    cout << "Введите цвет печати" << endl;
+    in >> printingColor;
+    printer.printingColor = printingColor;
+    printer.printingSpeed = printingSpeed;
+    return in;
 }

@@ -11,12 +11,15 @@ private:
 public:
     void writeToFile(ostream &file) override;
 
+    void readFromFile(istream &file) override;
+
     MFU(const string &producer, int cost, const string &color, const string &interfaces, const string &maxFormat,
         int printingSpeed, const string &printingColor, const string &scanningArea);
 
     virtual ~MFU();
 
     friend ostream &operator<<(ostream &os, const MFU &mfu);
+    friend istream &operator>>(istream &in, MFU &mfu);
 
     int getPrintingSpeed() const;
 

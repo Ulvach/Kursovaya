@@ -1,3 +1,4 @@
+#include <iostream>
 #include "MFU.h"
 
 MFU::MFU(const string &producer, int cost, const string &color, const string &interfaces, const string &maxFormat,
@@ -49,4 +50,34 @@ void MFU::writeToFile(ostream &file) {
     file << printingSpeed << endl;
     file << printingColor << endl;
     file << scanningArea << endl;
+}
+
+istream &operator>>(istream &in, MFU &mfu) {
+    in >> static_cast<Device &>(mfu);
+    cout << "Введите скорость печати:" << endl;
+    int printingSpeed;
+    in >> printingSpeed;
+    cout << "Введите цвет печати:" << endl;
+    string printingColor;
+    cin >> printingColor;
+    cout << "Введите область сканирования:" << endl;
+    string scanningArea;
+    cin >> scanningArea;
+    mfu.printingSpeed = printingSpeed;
+    mfu.printingColor = printingColor;
+    mfu.scanningArea = scanningArea;
+    return in;
+}
+
+void MFU::readFromFile(istream &file) {
+    Device::readFromFile(file);
+    int printingSpeed;
+    string printingColor;
+    string scanningArea;
+    file >> printingSpeed;
+    file >> printingColor;
+    file >> scanningArea;
+    this->printingSpeed = printingSpeed;
+    this->printingColor = printingColor;
+    this->scanningArea = scanningArea;
 }

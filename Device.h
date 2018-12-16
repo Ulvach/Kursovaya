@@ -16,10 +16,11 @@ private:
 public:
 
     virtual void writeToFile(ostream &file);
-
-    const string &getProducer() const;
+    virtual void readFromFile(istream &file);
 
     Device(const string &producer, int cost, const string &color, const string &interfaces, const string &maxFormat);
+
+    const string &getProducer() const;
 
     const string &getMaxFormat() const;
 
@@ -42,6 +43,7 @@ public:
     void setInterfaces(const string &interfaces);
 
     friend ostream &operator<<(ostream &os, const Device &device);
+    friend istream &operator>>(istream &in, Device &device);
 
 };
 

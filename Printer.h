@@ -16,7 +16,10 @@ private:
 public:
     void writeToFile(ostream &file) override;
 
+    void readFromFile(istream &file) override;
+
     friend ostream &operator<<(ostream &os, const Printer &scanner);
+    friend istream &operator>>(istream &is, Printer &printer);
 
     Printer(const string &producer, int cost, const string &color, const string &interfaces, const string &maxFormat,
             const string &printingColor, int printingSpeed);

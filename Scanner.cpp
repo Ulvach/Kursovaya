@@ -1,3 +1,4 @@
+#include <iostream>
 #include "Scanner.h"
 
 const string &Scanner::getScanningArea() const {
@@ -25,6 +26,22 @@ void Scanner::writeToFile(ostream &file) {
     file << "scanner" << endl;
     Device::writeToFile(file);
     file << scanningArea << endl;
+}
+
+istream &operator>>(istream &in, Scanner &scanner) {
+    in >> static_cast<Device &>(scanner);
+    cout << "Введите область сканирования" << endl;
+    string scanningArea;
+    in >> scanningArea;
+    scanner.scanningArea = scanningArea;
+    return in;
+}
+
+void Scanner::readFromFile(istream &file) {
+    Device::readFromFile(file);
+    string scanningArea;
+    file >> scanningArea;
+    this->scanningArea = scanningArea;
 }
 
 
