@@ -45,6 +45,8 @@ public:
     friend ostream &operator<<(ostream &os, const Device &device);
     friend istream &operator>>(istream &in, Device &device);
 
+    Device();
+
 };
 
 

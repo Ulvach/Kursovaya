@@ -12,12 +12,14 @@ class Scanner : public Device {
 private:
     string scanningArea;
 public:
-    void writeToFile(ostream &file);
+    void writeToFile(ostream &file) override;
 
     void readFromFile(istream &file) override;
 
     friend ostream &operator<<(ostream &os, const Scanner &scanner);
     friend istream &operator>>(istream &in, Scanner &scanner);
+
+    Scanner();
 
     Scanner(const string &producer, int cost, const string &color, const string &interfaces, const string &maxFormat,
             const string &scanningArea);

@@ -44,4 +44,6 @@ void Scanner::readFromFile(istream &file) {
     this->scanningArea = scanningArea;
 }
 
+Scanner::Scanner() {}
+
 

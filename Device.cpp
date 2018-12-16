@@ -107,3 +107,5 @@ istream &operator>>(istream &in, Device &device) {
     device.maxFormat = maxFormat;
     return in;
 }
+
+Device::Device() {}

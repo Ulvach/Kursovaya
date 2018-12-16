@@ -19,7 +19,7 @@ Periphery::~Periphery() {
 std::ostream &operator<<(std::ostream &os, const Periphery &periphery) {
     os << "Size is " << periphery.size << endl;
     for (int i = 0; i < periphery.size; ++i) {
-        os << *periphery.devices[i];
+        os << *periphery.devices[i] << endl;
     }
     return os;
 }

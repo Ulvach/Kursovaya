@@ -66,3 +66,5 @@ istream &operator>>(istream &in, Printer &printer) {
     printer.printingSpeed = printingSpeed;
     return in;
 }
+
+Printer::Printer() {}

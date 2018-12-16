@@ -18,6 +18,8 @@ public:
 
     virtual ~MFU();
 
+    MFU();
+
     friend ostream &operator<<(ostream &os, const MFU &mfu);
     friend istream &operator>>(istream &in, MFU &mfu);
 

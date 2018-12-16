@@ -81,3 +81,5 @@ void MFU::readFromFile(istream &file) {
     this->printingColor = printingColor;
     this->scanningArea = scanningArea;
 }
+
+MFU::MFU() {}

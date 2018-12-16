@@ -1,12 +1,10 @@
-#ifndef TP_SCANNER_H
-#define TP_SCANNER_H
+#ifndef TP_PRINTER_H
+#define TP_PRINTER_H
 
 #include <string>
 #include <ostream>
 
 #include "Device.h"
-
-using namespace std;
 
 class Printer : public Device {
 private:
@@ -20,6 +18,8 @@ public:
 
     friend ostream &operator<<(ostream &os, const Printer &scanner);
     friend istream &operator>>(istream &is, Printer &printer);
+
+    Printer();
 
     Printer(const string &producer, int cost, const string &color, const string &interfaces, const string &maxFormat,
             const string &printingColor, int printingSpeed);
@@ -37,4 +37,4 @@ public:
 };
 
 
-#endif //TP_SCANNER_H
+#endif //TP_PRINTER_H
