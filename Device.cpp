@@ -32,16 +32,27 @@ void Device::setInterfaces(const string &interfaces) {
     Device::interfaces = interfaces;
 }
 
-Device::Device(const string &producer, int cost, const string &color, const string &interfaces) : producer(producer),
-                                                                                                  cost(cost),
-                                                                                                  color(color),
-                                                                                                  interfaces(
-                                                                                                          interfaces) {}
-
 Device::~Device() {
     color = "";
     producer = "";
     cost = 0;
     color = "";
     interfaces = "";
+}
+
+const string &Device::getMaxFormat() const {
+    return maxFormat;
+}
+
+void Device::setMaxFormat(const string &maxFormat) {
+    Device::maxFormat = maxFormat;
+}
+
+Device::Device(const string &producer, int cost, const string &color, const string &interfaces, const string &maxFormat)
+        : producer(producer), cost(cost), color(color), interfaces(interfaces), maxFormat(maxFormat) {}
+
+ostream &operator<<(ostream &os, const Device &device) {
+    os << "Изготовитель: " << device.producer << " цена: " << device.cost << " цвет: " << device.color << " интерфейсы: "
+       << device.interfaces << " максимальный формат: " << device.maxFormat;
+    return os;
 }

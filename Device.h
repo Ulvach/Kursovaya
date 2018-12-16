@@ -2,6 +2,7 @@
 #define TP_DEVICE_H
 
 #include <string>
+#include <ostream>
 
 using namespace std;
 
@@ -11,10 +12,16 @@ private:
     int cost;
     string color;
     string interfaces;
+    string maxFormat;
 public:
     const string &getProducer() const;
 
-    Device(const string &producer, int cost, const string &color, const string &interfaces);
+    Device(const string &producer, int cost, const string &color, const string &interfaces, const string &maxFormat);
+
+    const string &getMaxFormat() const;
+
+    void setMaxFormat(const string &maxFormat);
+
     virtual ~Device();
 
     void setProducer(const string &producer);
@@ -30,6 +37,8 @@ public:
     const string &getInterfaces() const;
 
     void setInterfaces(const string &interfaces);
+
+    friend ostream &operator<<(ostream &os, const Device &device);
 
 };
 
