@@ -18,7 +18,7 @@ Scanner::~Scanner() {
 }
 
 ostream &operator<<(ostream &os, const Scanner &scanner) {
-    os << static_cast<const Device &>(scanner) << " Область сканирования: " << scanner.scanningArea;
+    os << "Сканер - "<< static_cast<const Device &>(scanner) << " Область сканирования: " << scanner.scanningArea;
     return os;
 }
 
@@ -45,5 +45,9 @@ void Scanner::readFromFile(istream &file) {
 }
 
 Scanner::Scanner() {}
+
+void Scanner::toConsole() {
+    cout << *this;
+}
 
 

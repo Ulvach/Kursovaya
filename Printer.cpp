@@ -11,7 +11,7 @@ Printer::Printer(const string &producer, int cost, const string &color, const st
                                                                                                     printingSpeed) {}
 
 ostream &operator<<(ostream &os, const Printer &scanner) {
-    os << static_cast<const Device &>(scanner) << " Цвет печати: " << scanner.printingColor << " Скорость печати: "
+    os << "Принтер - " << static_cast<const Device &>(scanner) << " Цвет печати: " << scanner.printingColor << " Скорость печати: "
        << scanner.printingSpeed;
     return os;
 }
@@ -38,7 +38,7 @@ Printer::~Printer() {
 }
 
 void Printer::writeToFile(ostream &file) {
-    file << "scanner" << endl;
+    file << "printer" << endl;
     Device::writeToFile(file);
     file << printingSpeed << endl;
     file << printingColor << endl;
@@ -68,3 +68,7 @@ istream &operator>>(istream &in, Printer &printer) {
 }
 
 Printer::Printer() {}
+
+void Printer::toConsole() {
+    cout << *this;
+}

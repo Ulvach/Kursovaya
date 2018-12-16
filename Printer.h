@@ -16,6 +16,8 @@ public:
 
     void readFromFile(istream &file) override;
 
+    void toConsole() override;
+
     friend ostream &operator<<(ostream &os, const Printer &scanner);
     friend istream &operator>>(istream &is, Printer &printer);
 

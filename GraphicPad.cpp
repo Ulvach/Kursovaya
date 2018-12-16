@@ -1,3 +1,4 @@
+#include <iostream>
 #include "GraphicPad.h"
 
 void GraphicPad::writeToFile(ostream &file) {
@@ -15,6 +16,10 @@ istream &operator>>(istream &in, GraphicPad &gp) {
 }
 
 ostream &operator<<(ostream &os, const GraphicPad &gp) {
-    os << static_cast<const Device &>(gp);
+    os << "Графический планшет - " << static_cast<const Device &>(gp);
     return os;
+}
+
+void GraphicPad::toConsole() {
+    cout << *this;
 }

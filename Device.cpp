@@ -109,3 +109,7 @@ istream &operator>>(istream &in, Device &device) {
 }
 
 Device::Device() {}
+
+void Device::toConsole() {
+    cout << *this;
+}

@@ -18,6 +18,8 @@ public:
 
     virtual ~MFU();
 
+    void toConsole() override;
+
     MFU();
 
     friend ostream &operator<<(ostream &os, const MFU &mfu);

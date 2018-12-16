@@ -42,6 +42,8 @@ public:
 
     void setInterfaces(const string &interfaces);
 
+    virtual void toConsole();
+
     friend ostream &operator<<(ostream &os, const Device &device);
     friend istream &operator>>(istream &in, Device &device);
 

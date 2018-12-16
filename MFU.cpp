@@ -33,7 +33,7 @@ void MFU::setScanningArea(const string &scanningArea) {
 }
 
 ostream &operator<<(ostream &os, const MFU &mfu) {
-    os << static_cast<const Device &>(mfu) << " Скорость печати: " << mfu.printingSpeed << " Цвет печати: "
+    os << "МФУ - " << static_cast<const Device &>(mfu) << " Скорость печати: " << mfu.printingSpeed << " Цвет печати: "
        << mfu.printingColor << " Область сканирования: " << mfu.scanningArea;
     return os;
 }
@@ -83,3 +83,7 @@ void MFU::readFromFile(istream &file) {
 }
 
 MFU::MFU() {}
+
+void MFU::toConsole() {
+    cout << *this;
+}

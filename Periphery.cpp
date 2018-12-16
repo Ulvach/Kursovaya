@@ -2,6 +2,11 @@
 
 #include "Periphery.h"
 
+#include "MFU.h"
+#include "Printer.h"
+#include "Scanner.h"
+#include "GraphicPad.h"
+
 using namespace std;
 
 Periphery* Periphery::periphery = nullptr;
@@ -17,9 +22,10 @@ Periphery::~Periphery() {
 }
 
 std::ostream &operator<<(std::ostream &os, const Periphery &periphery) {
-    os << "Size is " << periphery.size << endl;
+    os << "Всего: " << periphery.size << endl;
     for (int i = 0; i < periphery.size; ++i) {
-        os << *periphery.devices[i] << endl;
+        periphery.devices[i]->toConsole();
+        cout << endl;
     }
     return os;
 }
@@ -52,13 +58,54 @@ Periphery &Periphery::remove(int index) {
         cout << "Ошибка, неверный индекс массива" << endl;
     } else {
         int k = 0;
-        Device **copy = new Device*[this->size];
+        Device **copy = new Device*[this->size-1];
         for (int i = 0; i < this->size; ++i) {
             if (i != index) {
                 copy[k] = this->devices[i];
+                k++;
             }
         }
         this->size--;
+        this->devices = new Device*[this->size];
+        for (int j = 0; j < this->size; ++j) {
+            this->devices[j] = copy[j];
+        }
     }
     return *this;
+}
+
+void Periphery::writeToFile(ostream &os) {
+    os << size << endl;
+    for (int i = 0; i < size; ++i) {
+        devices[i]->writeToFile(os);
+    }
+}
+
+void Periphery::readFromFile(istream &is) {
+    int size;
+    is >> size;
+    for (int i = 0; i < size; ++i) {
+       string currentDevice;
+       is >> currentDevice;
+       if (currentDevice == "mfu") {
+           MFU *mfu = new MFU();
+           mfu->readFromFile(is);
+           this->add(*mfu);
+       }
+       if (currentDevice == "printer") {
+           Printer *p = new Printer();
+           p->readFromFile(is);
+           this->add(*p);
+       }
+       if (currentDevice == "scanner") {
+           Scanner *sc = new Scanner();
+           sc->readFromFile(is);
+           this->add(*sc);
+       }
+       if (currentDevice == "graphicPad") {
+           GraphicPad *gp = new GraphicPad();
+           gp->readFromFile(is);
+           this->add(*gp);
+       }
+    }
 }

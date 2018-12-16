@@ -21,10 +21,10 @@ void printMenu() {
 }
 
 int main() {
-    Periphery *perephery = Periphery::getInstance();
 
-//    ofstream file;
-//    file.open("text.txt", ios_base::out);
+    setlocale(LC_ALL, "Russian");
+
+    Periphery *perephery = Periphery::getInstance();
 
     bool isRunning = true;
     int mode;
@@ -62,13 +62,30 @@ int main() {
                 }
                 break;
             case 2:
+                cout << "Введите индекс удаляемого устройства" << endl;
                 int removed;
                 cin >> removed;
                 Periphery::getInstance()->remove(removed);
                 break;
             case 3:
+                try {
+                    ofstream file;
+                    file.open(FILENAME, ios_base::out);
+                    Periphery::getInstance()->writeToFile(file);
+                    file.close();
+                } catch (exception e) {
+                    cout << "Не удается записать в файл" << e.what();
+                }
                 break;
             case 4:
+                try {
+                    ifstream file;
+                    file.open(FILENAME, ios_base::in);
+                    Periphery::getInstance()->readFromFile(file);
+                    file.close();
+                } catch (exception e) {
+                    cout << "Не удается прочитать файл" << e.what();
+                }
                 break;
             case 5:
                 cout << *Periphery::getInstance();
