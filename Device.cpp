@@ -56,3 +56,7 @@ ostream &operator<<(ostream &os, const Device &device) {
        << device.interfaces << " максимальный формат: " << device.maxFormat;
     return os;
 }
+
+void Device::writeToFile(ostream &file) {
+    file << producer << endl << cost << endl << color << endl << interfaces << endl << maxFormat << endl;
+}

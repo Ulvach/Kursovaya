@@ -14,6 +14,9 @@ private:
     string interfaces;
     string maxFormat;
 public:
+
+    void writeToFile(ostream &file);
+
     const string &getProducer() const;
 
     Device(const string &producer, int cost, const string &color, const string &interfaces, const string &maxFormat);

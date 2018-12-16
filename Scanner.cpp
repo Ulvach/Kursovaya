@@ -20,3 +20,10 @@ ostream &operator<<(ostream &os, const Scanner &scanner) {
     os << static_cast<const Device &>(scanner) << " Область сканирования: " << scanner.scanningArea;
     return os;
 }
+
+void Scanner::writeToFile(ostream &file) {
+    file << "scanner" << endl;
+    static_cast<Device &>(*this).writeToFile(file);
+}
+
+

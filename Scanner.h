@@ -3,6 +3,7 @@
 
 #include <string>
 #include <ostream>
+
 #include "Device.h"
 
 using namespace std;
@@ -11,6 +12,8 @@ class Scanner : public Device {
 private:
     string scanningArea;
 public:
+    void writeToFile(ostream &file);
+
     friend ostream &operator<<(ostream &os, const Scanner &scanner);
 
     Scanner(const string &producer, int cost, const string &color, const string &interfaces, const string &maxFormat,
