@@ -17,6 +17,48 @@ Periphery::~Periphery() {
 }
 
 std::ostream &operator<<(std::ostream &os, const Periphery &periphery) {
-    cout << "Size is " << periphery.size << endl;
+    os << "Size is " << periphery.size << endl;
+    for (int i = 0; i < periphery.size; ++i) {
+        os << periphery.devices[i];
+    }
     return os;
+}
+
+int Periphery::getSize() const {
+    return size;
+}
+
+
+Device **Periphery::getDevices() const {
+    return devices;
+}
+
+Periphery &Periphery::add(Device &device) {
+    this->size++;
+    Device **copy = new Device*[this->size - 1];
+    for (int i = 0; i < this->size - 1; ++i) {
+        copy[i] = this->devices[i];
+    }
+    this->devices = new Device*[this->size];
+    for (int j = 0; j < this->size - 1; ++j) {
+        this->devices[j] = copy[j];
+    }
+    this->devices[size - 1] = &device;
+    return *this;
+}
+
+Periphery &Periphery::remove(int index) {
+    if (index < 0 || index >= this->size) {
+        cout << "Ошибка, неверный индекс массива" << endl;
+    } else {
+        int k = 0;
+        Device **copy = new Device*[this->size];
+        for (int i = 0; i < this->size; ++i) {
+            if (i != index) {
+                copy[k] = this->devices[i];
+            }
+        }
+        this->size--;
+    }
+    return *this;
 }

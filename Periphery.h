@@ -17,11 +17,17 @@ public:
     Periphery(const Periphery&) = delete;
     Periphery& operator=(Periphery&) = delete;
 
+    Periphery& add(Device &device);
+    Periphery& remove(int index);
+
     static Periphery* getInstance() {
         if(!periphery)
             periphery = new Periphery();
         return periphery;
     }
+
+    int getSize() const;
+    Device **getDevices() const;
 
     friend std::ostream &operator<<(std::ostream &os, const Periphery &periphery);
 
