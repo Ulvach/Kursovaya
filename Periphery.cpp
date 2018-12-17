@@ -93,6 +93,7 @@ void Periphery::writeToFile() {
         for (int i = 0; i < size; ++i) {
             if (devices[i]->getFilename() == files[j]) {
                 devices[i]->writeToFile(file);
+                file << endl;
             }
         }
         file.close();
