@@ -29,8 +29,8 @@ public:
     int getSize() const;
     Device **getDevices() const;
 
-    void writeToFile(ostream &os);
-    void readFromFile(istream &is);
+    void writeToFile();
+    void readFromFile();
 
     friend std::ostream &operator<<(std::ostream &os, const Periphery &periphery);
 

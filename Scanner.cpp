@@ -50,4 +50,8 @@ void Scanner::toConsole() {
     cout << *this;
 }
 
+string Scanner::getFilename() {
+    return "scanner.txt";
+}
+
 

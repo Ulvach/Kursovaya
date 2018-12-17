@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 
 #include "Periphery.h"
 
@@ -74,38 +75,63 @@ Periphery &Periphery::remove(int index) {
     return *this;
 }
 
-void Periphery::writeToFile(ostream &os) {
-    os << size << endl;
-    for (int i = 0; i < size; ++i) {
-        devices[i]->writeToFile(os);
+void Periphery::writeToFile() {
+    const string files[] = {
+            "mfu.txt", "scanner.txt", "printer.txt", "graphicPad.txt"
+    };
+    const int length = 4;
+    for (int j = 0; j < 4; ++j) {
+        ofstream file;
+        int count = 0;
+        file.open(files[j], ios_base::out);
+        for (int i = 0; i < size; ++i) {
+            if (devices[i]->getFilename() == files[j]) {
+                count++;
+            }
+        }
+        file << count << endl;
+        for (int i = 0; i < size; ++i) {
+            if (devices[i]->getFilename() == files[j]) {
+                devices[i]->writeToFile(file);
+            }
+        }
+        file.close();
     }
 }
 
-void Periphery::readFromFile(istream &is) {
-    int size;
-    is >> size;
-    for (int i = 0; i < size; ++i) {
-       string currentDevice;
-       is >> currentDevice;
-       if (currentDevice == "mfu") {
-           MFU *mfu = new MFU();
-           mfu->readFromFile(is);
-           this->add(*mfu);
-       }
-       if (currentDevice == "printer") {
-           Printer *p = new Printer();
-           p->readFromFile(is);
-           this->add(*p);
-       }
-       if (currentDevice == "scanner") {
-           Scanner *sc = new Scanner();
-           sc->readFromFile(is);
-           this->add(*sc);
-       }
-       if (currentDevice == "graphicPad") {
-           GraphicPad *gp = new GraphicPad();
-           gp->readFromFile(is);
-           this->add(*gp);
-       }
+void Periphery::readFromFile() {
+    const string files[] = {
+            "mfu.txt", "scanner.txt", "printer.txt", "graphicPad.txt"
+    };
+    for (int j = 0; j < 4; ++j) {
+        ifstream is;
+        is.open(files[j], ios_base::in);
+        int size;
+        is >> size;
+        for (int i = 0; i < size; ++i) {
+           string currentDevice;
+           is >> currentDevice;
+           if (currentDevice == "mfu") {
+               MFU *mfu = new MFU();
+               mfu->readFromFile(is);
+               this->add(*mfu);
+           }
+           if (currentDevice == "printer") {
+               Printer *p = new Printer();
+               p->readFromFile(is);
+               this->add(*p);
+           }
+           if (currentDevice == "scanner") {
+               Scanner *sc = new Scanner();
+               sc->readFromFile(is);
+               this->add(*sc);
+           }
+           if (currentDevice == "graphicPad") {
+               GraphicPad *gp = new GraphicPad();
+               gp->readFromFile(is);
+               this->add(*gp);
+           }
+        }
+        is.close();
     }
 }

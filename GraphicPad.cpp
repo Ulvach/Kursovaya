@@ -23,3 +23,7 @@ ostream &operator<<(ostream &os, const GraphicPad &gp) {
 void GraphicPad::toConsole() {
     cout << *this;
 }
+
+string GraphicPad::getFilename() {
+    return "graphicPad.txt";
+}

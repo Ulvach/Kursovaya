@@ -72,3 +72,7 @@ Printer::Printer() {}
 void Printer::toConsole() {
     cout << *this;
 }
+
+string Printer::getFilename() {
+    return "printer.txt";
+}

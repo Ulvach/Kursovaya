@@ -69,20 +69,14 @@ int main() {
                 break;
             case 3:
                 try {
-                    ofstream file;
-                    file.open(FILENAME, ios_base::out);
-                    Periphery::getInstance()->writeToFile(file);
-                    file.close();
+                    Periphery::getInstance()->writeToFile();
                 } catch (exception e) {
                     cout << "Не удается записать в файл" << e.what();
                 }
                 break;
             case 4:
                 try {
-                    ifstream file;
-                    file.open(FILENAME, ios_base::in);
-                    Periphery::getInstance()->readFromFile(file);
-                    file.close();
+                    Periphery::getInstance()->readFromFile();
                 } catch (exception e) {
                     cout << "Не удается прочитать файл" << e.what();
                 }

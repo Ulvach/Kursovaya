@@ -87,3 +87,7 @@ MFU::MFU() {}
 void MFU::toConsole() {
     cout << *this;
 }
+
+string MFU::getFilename() {
+    return "mfu.txt";
+}

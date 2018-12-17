@@ -9,6 +9,8 @@ public:
     void writeToFile(ostream &file) override;
     void readFromFile(istream &file) override;
 
+    string getFilename() override;
+
     void toConsole() override;
 
     friend ostream &operator<<(ostream &os, const GraphicPad &gp);

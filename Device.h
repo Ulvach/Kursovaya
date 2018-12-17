@@ -17,6 +17,7 @@ public:
 
     virtual void writeToFile(ostream &file);
     virtual void readFromFile(istream &file);
+    virtual string getFilename() = 0;
 
     Device(const string &producer, int cost, const string &color, const string &interfaces, const string &maxFormat);
 

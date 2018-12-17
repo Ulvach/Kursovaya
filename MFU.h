@@ -18,6 +18,8 @@ public:
 
     virtual ~MFU();
 
+    string getFilename() override;
+
     void toConsole() override;
 
     MFU();
